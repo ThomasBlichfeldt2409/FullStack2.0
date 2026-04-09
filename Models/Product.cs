@@ -12,7 +12,7 @@ namespace FullStack2._0.Models
         public int CategoryId { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public Category Category { get; set; }
-        public List<ProductImage> Images { get; set; }
+        public Category Category { get; set; } = null!;
+        public List<ProductImage> Images { get; set; } = null!;
     }
 }

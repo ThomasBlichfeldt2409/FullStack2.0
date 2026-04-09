@@ -11,7 +11,7 @@ namespace FullStack2._0.Models
         public OrderStatus Status { get; set; }
         public decimal TotalPrice { get; set; }
 
-        public ApplicationUser User { get; set; }
-        public List<OrderItem> Items { get; set; }
+        public ApplicationUser User { get; set; } = null!;
+        public List<OrderItem> Items { get; set; } = null!;
     }
 }
