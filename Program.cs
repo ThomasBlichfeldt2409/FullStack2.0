@@ -34,6 +34,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
         options.SignIn.RequireConfirmedAccount = false;
         options.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
     })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
@@ -46,6 +47,15 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
+
+// Call Seeders
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    IServiceProvider services = scope.ServiceProvider;
+
+    await RoleSeeder.SeedRoles(services);
+    await AdminSeeder.SeedAdmin(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
