@@ -1,9 +1,40 @@
 ﻿@inherits LayoutComponentBase
 
+@using Microsoft.AspNetCore.Components.Authorization;
+@using FullStack2._0.Data;
+@using FullStack2._0.Services.Interfaces;
+@inject NavigationManager Nav
+@inject ICartService CartService;
+
+<div class="topbar">
+
+    <!-- Admin Icons -->
+    <div class="admin-icons">
+        <button class="icon-button" @onclick="GoToAdminProducts">
+            <i class="bi bi-box-fill"></i>
+        </button>
+        <button class="icon-button" @onclick="GoToAdminOrders">
+            <i class="bi bi-receipt-fill"></i>
+        </button>
+    </div>
+
+    <!-- Center Title -->
+    <div class="title">
+        Anette Blichfeldt Keramik
+    </div>
+
+</div>
+
 @Body
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code {
+    private void GoToAdminProducts()
+    {
+        Nav.NavigateTo("/");
+    }
+
+    private void GoToAdminOrders()
+    {
+        Nav.NavigateTo("/");
+    }
+}
