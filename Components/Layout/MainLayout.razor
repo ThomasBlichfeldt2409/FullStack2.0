@@ -1,21 +1,35 @@
 ﻿@inherits LayoutComponentBase
 
 @using Microsoft.AspNetCore.Components.Authorization;
+@using Microsoft.AspNetCore.Identity;
 @using FullStack2._0.Data;
 @using FullStack2._0.Services.Interfaces;
 @inject NavigationManager Nav
 @inject ICartService CartService;
+@inject AuthenticationStateProvider AuthStateProvider;
+@inject UserManager<ApplicationUser> UserManager;
 
 <div class="topbar">
 
     <!-- Admin Icons -->
     <div class="topbar-icons">
-        <button class="icon-button" @onclick="GoToAdminProducts">
-            <i class="bi bi-box-fill"></i>
-        </button>
-        <button class="icon-button" @onclick="GoToAdminOrders">
-            <i class="bi bi-receipt"></i>
-        </button>
+
+        <!-- Product -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToAdminProducts">
+                <i class="bi bi-box-fill"></i>
+            </button>
+            <span class="icon-text"></span>
+        </div>
+
+        <!-- Order -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToAdminOrders">
+                <i class="bi bi-receipt"></i>
+            </button>
+            <span class="icon-text">@orderCount Afventer svar</span>
+        </div>
+
     </div>
 
     <!-- Center Title -->
@@ -25,12 +39,26 @@
 
     <!-- User Icons -->
     <div class="topbar-icons">
-        <button class="icon-button" @onclick="GoToLogin">
-            <i class="bi bi-person-fill"></i>
-        </button>
-        <button class="icon-button" @onclick="GoToCart">
-            <i class="bi bi-cart"></i>
-        </button>
+
+        <span class="user-name" @userDisplay></span>
+        <div class="separator"></div>
+
+        <!-- Login -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToLogin">
+                <i class="bi bi-person-fill"></i>
+            </button>
+            <span class="icon-text"></span>
+        </div>
+
+        <!-- Cart -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToCart">
+                <i class="bi bi-cart"></i>
+            </button>
+            <span class="icon-text">@cartCount Varer</span>
+        </div>
+
     </div>
 
 </div>
@@ -38,6 +66,10 @@
 @Body
 
 @code {
+    private int orderCount = 0;
+    private int cartCount = 0;
+    private string userDisplay = "Gæst";
+
     private void GoToAdminProducts()
     {
         Nav.NavigateTo("/");
