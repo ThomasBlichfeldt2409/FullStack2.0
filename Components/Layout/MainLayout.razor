@@ -25,7 +25,11 @@
 
     <!-- User Icons -->
     <div class="topbar-icons">
-        <button class="icon-button">
+        <button class="icon-button" @onclick="GoToLogin">
+            <i class="bi bi-person-fill"></i>
+        </button>
+        <button class="icon-button" @onclick="GoToCart">
+            <i class="bi bi-cart"></i>
         </button>
     </div>
 
@@ -40,6 +44,16 @@
     }
 
     private void GoToAdminOrders()
+    {
+        Nav.NavigateTo("/");
+    }
+
+    private void GoToLogin()
+    {
+        Nav.NavigateTo("/");
+    }
+
+    private void GoToCart()
     {
         Nav.NavigateTo("/");
     }
