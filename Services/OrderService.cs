@@ -63,5 +63,11 @@ namespace FullStack2._0.Services
             
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetCountByStatusAsync(OrderStatus status)
+        {
+            return await _context.Orders
+                .CountAsync(o => o.Status == status);
+        }
     }
 }

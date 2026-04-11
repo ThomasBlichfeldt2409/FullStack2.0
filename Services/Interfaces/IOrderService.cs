@@ -9,5 +9,6 @@ namespace FullStack2._0.Services.Interfaces
         Task<Order?> GetByIdAsync(int id);
         Task CreateAsync(string userId, List<OrderItem> items);
         Task UpdateStatusAsync(int OrderId, OrderStatus staus);
+        Task<int> GetCountByStatusAsync(OrderStatus status);
     }
 }

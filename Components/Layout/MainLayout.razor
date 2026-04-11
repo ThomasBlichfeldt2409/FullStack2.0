@@ -1,4 +1,57 @@
 ﻿@using FullStack2._0.Data;
 @inherits LayoutComponentBase
 
+<div class="top-bar">
+
+    <!-- Left Icon Section -->
+    <div class="icon-section">
+        <!-- Product -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToAdminProducts">
+                <i class="bi bi-box-fill"></i>
+            </button>
+        </div>
+
+        <!-- Order -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToAdminOrders">
+                <i class="bi bi-receipt"></i>
+            </button>
+            <span class="icon-text">@orderCount Afventer svar</span>
+        </div>
+    </div>
+
+    <!-- Title Section -->
+    <div class="title-section">
+        <!-- Title -->
+        <span class="title-text">Anette Blichfeldt Keramik</span>
+    </div>
+
+    <!-- User Section -->
+    <div class="user-section">
+        <!-- User Text -->
+        <span class="user-text">@userDisplay</span>
+        <div class="separator"></div>
+    </div>
+
+    <!-- Right Icon Section -->
+    <div class="icon-section">
+        <!-- Login -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToLogin">
+                <i class="bi bi-person-fill"></i>
+            </button>
+        </div>
+
+        <!-- Cart -->
+        <div class="icon-group">
+            <button class="icon-button" @onclick="GoToCart">
+                <i class="bi bi-cart"></i>
+            </button>
+            <span class="icon-text">@cartCount Varer</span>
+        </div>
+    </div>
+
+</div>
+
 @Body
