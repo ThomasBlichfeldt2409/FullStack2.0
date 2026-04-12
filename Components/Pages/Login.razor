@@ -1,5 +1,32 @@
 ﻿@page "/login"
 
-<h3>Login</h3>
+<div class="outer-panel">
+    <!-- Not Authorized -->
+    <AuthorizeView>
+        <NotAuthorized>
+            <!-- Title and Text -->
+            <span class="large-text">Log på</span>
+            <span class="small-text">Opret bruger eller log på for at handle.</span>
 
-<p>This is the login page</p>
+            <!-- Email and Password -->
+            <input class="input-field" placeholder="Email" @bind="email"/>
+            <input class="input-field" placeholder="Adgangskode" type="password" @bind="password"/>
+
+            <!-- Error Message -->
+            <div class="error-panel">
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <span class="error-icon">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </span>
+                    <span class="error-text">@errorMessage</span>
+                }
+            </div>
+
+            <!-- Login Button -->
+            <button class="login-button" @onclick="HandleLogin">
+                Log på
+            </button>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
