@@ -7,17 +7,21 @@
     <div class="icon-section">
         <!-- Product -->
         <div class="icon-group">
-            <button class="icon-button" @onclick="GoToAdminProducts">
-                <i class="bi bi-box-fill"></i>
-            </button>
+            <AuthorizeView Roles=@Roles.Admin>
+                <button class="icon-button" @onclick="GoToAdminProducts">
+                    <i class="bi bi-box-fill"></i>
+                </button>
+            </AuthorizeView>
         </div>
-
+        
         <!-- Order -->
         <div class="icon-group">
-            <button class="icon-button" @onclick="GoToAdminOrders">
-                <i class="bi bi-receipt"></i>
-            </button>
-            <span class="icon-text">@orderCount Afventer svar</span>
+            <AuthorizeView Roles=@Roles.Admin>
+                <button class="icon-button" @onclick="GoToAdminOrders">
+                    <i class="bi bi-receipt"></i>
+                </button>
+                <span class="icon-text">@orderCount Afventer svar</span>
+            </AuthorizeView>
         </div>
     </div>
 
@@ -45,10 +49,12 @@
 
         <!-- Cart -->
         <div class="icon-group">
-            <button class="icon-button" @onclick="GoToCart">
-                <i class="bi bi-cart"></i>
-            </button>
-            <span class="icon-text">@cartCount Varer</span>
+            <AuthorizeView>
+                <button class="icon-button" @onclick="GoToCart">
+                    <i class="bi bi-cart"></i>
+                </button>
+                <span class="icon-text">@cartCount Varer</span>
+            </AuthorizeView>
         </div>
     </div>
 

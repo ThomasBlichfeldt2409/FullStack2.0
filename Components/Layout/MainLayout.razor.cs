@@ -21,7 +21,8 @@ namespace FullStack2._0.Components.Layout
 
         protected void GoToAdminProducts() => Nav.NavigateTo("/");
         protected void GoToAdminOrders() => Nav.NavigateTo("/");
-        protected void GoToLogin() => Nav.NavigateTo("/");
+        protected void GoToLogin() => Nav.NavigateTo("/login");
+
         protected void GoToCart() => Nav.NavigateTo("/");
 
         protected override async Task OnInitializedAsync()
